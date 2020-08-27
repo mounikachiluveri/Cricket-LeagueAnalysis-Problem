@@ -15,6 +15,7 @@ public class IPLAnalysisTest {
     private static IPLAnalyser iplAnalyzer;
     private String sortedData;
     private static final String IPL_BATSMAN_CSV_FILE_PATH = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
+    private static final String IPL_BATSMAN_CSV_WRONG_FILE_PATH = "./src/resources/IPL2019FactsheetMostRuns.csv";
 
 
     @Test
@@ -25,6 +26,16 @@ public class IPLAnalysisTest {
             System.out.println(numOfEnteries);
             Assert.assertEquals(100, numOfEnteries);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void givenIPLBatsmanCSVWrongFile_ShouldThrowException() {
+        IPLAnalyser iplAnalyzer = new IPLAnalyser();
+        try {
+            int numOfEnteries = iplAnalyzer.loadIPLData(IPL_BATSMAN_CSV_WRONG_FILE_PATH);
+            Assert.assertEquals(100, numOfEnteries);
+        } catch (Exception e){
             e.printStackTrace();
         }
     }

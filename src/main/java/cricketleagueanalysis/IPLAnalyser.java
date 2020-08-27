@@ -12,16 +12,14 @@ import java.util.stream.StreamSupport;
     public class IPLAnalyser {
         public int loadIPLData(String csvFilePath) throws IPLAnalyserException, CSVBuilderException {
             List<MostRunsData> iplBatsmanCSVList = new ArrayList<MostRunsData>();
-            int  noOfRecords = 0;
+            int noOfRecords = 0;
             try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
                 Iterator<MostRunsData> CSVIterator = IPLBuilderFactory.createCSVbuilder().getCSVFileIterator(reader, MostRunsData.class);
                 Iterable<MostRunsData> csvIterable = () -> CSVIterator;
                 noOfRecords = (int) StreamSupport.stream(csvIterable.spliterator(), false).count();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (IOException | CSVBuilderException e) {
+                throw new IPLAnalyserException("Wrong file", IPLAnalyserException.ExceptionType.FILE_PROBLEM);
             }
             return noOfRecords;
         }
     }
-
-

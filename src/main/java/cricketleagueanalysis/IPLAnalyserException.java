@@ -1,7 +1,7 @@
 package cricketleagueanalysis;
 public class IPLAnalyserException extends Exception{
     public enum ExceptionType {
-        IPL_FILE_PROBLEM, INCORRECT_CSV_INPUT, INVALID_COUNTRY;
+        IPL_FILE_PROBLEM,FILE_PROBLEM;
     }
 
     public ExceptionType type;
