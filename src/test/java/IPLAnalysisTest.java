@@ -14,7 +14,7 @@ import java.io.IOException;
 public class IPLAnalysisTest {
     private static IPLAnalyser iplAnalyzer;
     private String sortedData;
-    private static final String IPL_BATSMAN_CSV_FILE_PATH = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
+    private static final String IPL_BATSMAN_CSV_FILE_PATH =  "./src/test/resources/IPL2019FactsheetMostRuns.csv";
     private static final String IPL_BATSMAN_CSV_WRONG_FILE_PATH = "./src/resources/IPL2019FactsheetMostRuns.csv";
 
 
@@ -29,14 +29,29 @@ public class IPLAnalysisTest {
             e.printStackTrace();
         }
     }
+
     @Test
     public void givenIPLBatsmanCSVWrongFile_ShouldThrowException() {
         IPLAnalyser iplAnalyzer = new IPLAnalyser();
         try {
             int numOfEnteries = iplAnalyzer.loadIPLData(IPL_BATSMAN_CSV_WRONG_FILE_PATH);
             Assert.assertEquals(100, numOfEnteries);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenIPLBatsman_WhenSortedOnAverage_ShouldReturnSortedResult() {
+        try {
+            IPLAnalyser iplAnalyzer = new IPLAnalyser();
+            iplAnalyzer.loadIPLData(IPL_BATSMAN_CSV_FILE_PATH);
+            sortedData = iplAnalyzer.getSortedData();
+            MostRunsData[] statisticCSV = new Gson().fromJson(sortedData, MostRunsData[].class);
+            System.out.println(statisticCSV[0].playerName);
+            Assert.assertEquals("MS Dhoni", statisticCSV[0].playerName);
+        } catch (IPLAnalyserException e) {
+            Assert.assertEquals(IPLAnalyserException.ExceptionType.WRONG_DELIMETER_WRONG_HEADER_FILE, e.type);
         }
     }
 }
