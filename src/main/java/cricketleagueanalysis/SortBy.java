@@ -5,7 +5,7 @@ package cricketleagueanalysis;
  import java.util.Map;
 
 public enum SortBy {
-    AVG,STRIKING_RATE;
+    AVG,STRIKING_RATE,FOUR_AND_SIX;
     public static Map<SortBy, Comparator<MostRunsData>> sortMap = new HashMap<>();
     public static void initializeSortedMap(){
         sortMap.put(SortBy.AVG, Comparator.comparing(s -> s.average));

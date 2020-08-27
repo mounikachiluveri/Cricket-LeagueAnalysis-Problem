@@ -24,6 +24,7 @@ public class IPLAnalyser {
 
         }  catch (IOException e) {
             throw new IPLAnalyserException(e.getMessage(),
+
                     IPLAnalyserException.ExceptionType.FILE_PROBLEM);
         } catch (RuntimeException e) {
             throw new IPLAnalyserException(e.getMessage(),

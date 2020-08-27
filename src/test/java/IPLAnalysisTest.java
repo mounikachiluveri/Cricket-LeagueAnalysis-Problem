@@ -12,7 +12,7 @@ import java.io.IOException;
 public class IPLAnalysisTest {
     private static IPLAnalyser iplAnalyzer;
     private String sortedData;
-    private static final String IPL_BATSMAN_CSV_FILE_PATH =  "./src/test/resources/IPL2019FactsheetMostRuns.csv";
+    private static final String IPL_BATSMAN_CSV_FILE_PATH ="./src/test/resources/IPL2019FactsheetMostRuns.csv";
     private static final String IPL_BATSMAN_CSV_WRONG_FILE_PATH = "./src/resources/IPL2019FactsheetMostRuns.csv";
 
 
@@ -59,6 +59,17 @@ public class IPLAnalysisTest {
             sortedData = iplAnalyzer.getSortedData(SortBy.STRIKING_RATE);
             MostRunsData[] statisticCSV = new Gson().fromJson(sortedData, MostRunsData[].class);
             Assert.assertEquals("Ishant Sharma", statisticCSV[0].playerName);
+        } catch (IPLAnalyserException e) {
+            Assert.assertEquals(IPLAnalyserException.ExceptionType.FILE_PROBLEM, e.type);
+        }
+    }
+    @Test
+    public void givenIPLBatsman_WhenSortedOnFourAndSix_ShouldReturnSortedResult() throws IPLAnalyserException {
+        try {
+            iplAnalyzer.loadIPLData(IPL_BATSMAN_CSV_FILE_PATH);
+            sortedData = iplAnalyzer.getSortedData(SortBy.FOUR_AND_SIX);
+            MostRunsData[] statisticCSV = new Gson().fromJson(sortedData, MostRunsData[].class);
+            Assert.assertEquals("Andre Russell", statisticCSV[0].playerName);
         } catch (IPLAnalyserException e) {
             Assert.assertEquals(IPLAnalyserException.ExceptionType.FILE_PROBLEM, e.type);
         }
