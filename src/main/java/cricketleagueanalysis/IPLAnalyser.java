@@ -1,5 +1,4 @@
 package cricketleagueanalysis;
-
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -19,12 +18,11 @@ public class IPLAnalyser {
 
     public int loadIPLData(String csvFilePath) throws IPLAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
-            ICSVBuilder csvBuilder = IPLBuilderFactory.createCSVbuilder();
+            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVbuilder();
             statisticList = csvBuilder.getCSVFileList(reader, MostRunsData.class);
 
         }  catch (IOException e) {
             throw new IPLAnalyserException(e.getMessage(),
-
                     IPLAnalyserException.ExceptionType.FILE_PROBLEM);
         } catch (RuntimeException e) {
             throw new IPLAnalyserException(e.getMessage(),
@@ -36,14 +34,13 @@ public class IPLAnalyser {
         return statisticList.size();
     }
 
-    public String getSortedData( SortBy sortBy){
+    public String getSortedData(SortBy avg){
         String sortedIPLDataJson = "";
-        this.statisticList = this.statisticList.stream()
-                .sorted(sortBy.sortMap.get(sortBy).reversed())
+        List<MostRunsData> list = new ArrayList<>();
+        list = this.statisticList.stream().sorted((MostRunsData c1, MostRunsData c2) -> c2.average.compareTo(c1.average))
                 .collect(Collectors.toList());
-        sortedIPLDataJson = new Gson().toJson(this.statisticList);
+        sortedIPLDataJson = new Gson().toJson(list);
         return sortedIPLDataJson;
+
     }
-
-
 }
