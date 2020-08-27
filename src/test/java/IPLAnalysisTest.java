@@ -58,6 +58,17 @@ public class IPLAnalysisTest {
             Assert.assertEquals(IPLAnalyserException.ExceptionType.FILE_PROBLEM, e.type);
         }
     }
+    @Test
+    public void givenIPLBatsman_WhenSortedOnFourAndSix_ShouldReturnStrikeRateResult(){
+        try {
+            iplAnalyzer.loadIPLData(IPL_BATSMAN_CSV_FILE_PATH);
+            sortedData = iplAnalyzer.getSortedData(SortBy.FOUR_AND_SIX);
+            MostRunsData[] statisticCSV = new Gson().fromJson(sortedData, MostRunsData[].class);
+            Assert.assertEquals(204.81, statisticCSV[0].strikeRate,0.0);
+        } catch ( IPLAnalyserException e) {
+            Assert.assertEquals(IPLAnalyserException.ExceptionType.FILE_PROBLEM, e.type);
+        }
+    }
 }
 
 
