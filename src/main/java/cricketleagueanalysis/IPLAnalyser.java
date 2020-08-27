@@ -35,13 +35,14 @@ public class IPLAnalyser {
         return statisticList.size();
     }
 
-    public String getSortedData(){
+    public String getSortedData( SortBy sortBy){
         String sortedIPLDataJson = "";
-        List<MostRunsData> list = new ArrayList<>();
-        list = this.statisticList.stream().sorted((MostRunsData c1, MostRunsData c2) -> c2.average.compareTo(c1.average))
+        this.statisticList = this.statisticList.stream()
+                .sorted(sortBy.sortMap.get(sortBy).reversed())
                 .collect(Collectors.toList());
-        sortedIPLDataJson = new Gson().toJson(list);
+        sortedIPLDataJson = new Gson().toJson(this.statisticList);
         return sortedIPLDataJson;
-
     }
+
+
 }
