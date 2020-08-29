@@ -1,24 +1,24 @@
 package cricketleagueanalysis;
 
-public class IPLAnalyserException extends Exception {
+public class IPLAnalyserException extends Throwable {
 
-        enum ExceptionType{
-            INPUT_FILE_PROBLEM,
-            INCORRECT_DATA_PROBLEM,
-            INVALID_PLAYER,
-            NO_PLAYER_DATA;
-        }
-
-        ExceptionType type;
-
-        public IPLAnalyserException(String message, ExceptionType type ) {
-            super(message);
-            this.type = type;
-        }
-
-        public IPLAnalyserException(String message, String name) {
-            super(message);
-            this.type = ExceptionType.valueOf(name);
-        }
+    public enum ExceptionType {
+        INPUT_FILE_PROBLEM,
+        INCORRECT_DATA_PROBLEM,
+        INVALID_PLAYER,
+        NO_PLAYER_DATA;
     }
+
+    public ExceptionType type;
+
+    public IPLAnalyserException(String message, ExceptionType type) {
+        super(message);
+        this.type = type;
+    }
+
+    public IPLAnalyserException(String message, String name) {
+        super(message);
+        this.type = ExceptionType.valueOf(name);
+    }
+}
 
