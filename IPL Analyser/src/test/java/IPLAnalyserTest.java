@@ -1,5 +1,8 @@
+import com.google.gson.Gson;
 import cricketleagueanalysis.IPLAnalyser;
 import cricketleagueanalysis.IPLAnalyserException;
+import cricketleagueanalysis.MostRunsData;
+import cricketleagueanalysis.SortBy;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -56,6 +59,16 @@ public class IPLAnalyserTest {
             Assert.assertEquals(IPLAnalyserException.ExceptionType.INPUT_FILE_PROBLEM, e.type);
         }
     }
+    @Test
+    public void givenIPLFactSheetMostRunsFile_whenSortedOnBattingAverage_shouldReturnSortedResult() throws IPLAnalyserException {
+        IPLAnalyser iplAnalyser = new IPLAnalyser();
+        IPLAnalyser.loadIPLFactSheetData(IPLAnalyser.PlayerType.BATSMAN,IPL_BATSMAN_CSV_FILE_PATH );
+        String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BATSMAN, SortBy.Field.AVERAGE_OF_BATSMAN);
+        MostRunsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostRunsData[].class);
+        Assert.assertEquals("MS Dhoni ", cricketCSV[0].player);
+
+    }
 }
+
 
 

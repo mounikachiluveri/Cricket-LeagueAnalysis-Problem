@@ -8,7 +8,7 @@ import java.util.Map;
 
     public class SortBy{
         static Map<Field, Comparator> sortFieldComparator = new HashMap<>();
-        enum Field {
+        public enum Field {
             AVERAGE_OF_BATSMAN
         }
 
