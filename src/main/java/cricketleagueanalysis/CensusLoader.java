@@ -1,4 +1,4 @@
 package cricketleagueanalysis;
 
-public class SortBy {
+public class CensusLoader {
 }

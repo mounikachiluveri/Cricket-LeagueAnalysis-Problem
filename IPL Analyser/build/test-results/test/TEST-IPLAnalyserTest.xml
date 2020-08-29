@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-29T13:14:15" hostname="DESKTOP-1HIDL2M" time="4.514">
+  <properties/>
+  <testcase name="givenIPLFactSheetMostRunsFile_whenProper_shouldReturnCorrectRecordCount" classname="IPLAnalyserTest" time="4.514"/>
+  <system-out><![CDATA[100
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
