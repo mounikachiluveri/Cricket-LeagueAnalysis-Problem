@@ -106,6 +106,15 @@ public class IPLAnalyserTest {
         Assert.assertEquals("Ishant Sharma", cricketCSV[0].player);
 
     }
+    @Test
+    public void givenIPLFactSheetMostRunsFile_whenSortedOnRunsWithAverage_shouldReturnSortedResult() throws IPLAnalyserException {
+        IPLAnalyser iplAnalyser = new IPLAnalyser();
+        IPLAnalyser.loadIPLFactSheetData(IPLAnalyser.PlayerType.BATSMAN, IPL_BATSMAN_CSV_FILE_PATH);
+        String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BATSMAN, SortBy.Field.RUNS_WITH_AVERAGE);
+        MostRunsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostRunsData[].class);
+        Assert.assertEquals("David Warner", cricketCSV[0].player);
+
+    }
 }
 
 
