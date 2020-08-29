@@ -6,7 +6,8 @@ public class IPLAnalyserException extends Throwable {
         INPUT_FILE_PROBLEM,
         INCORRECT_DATA_PROBLEM,
         INVALID_PLAYER,
-        NO_PLAYER_DATA;
+        NO_PLAYER_DATA,
+        INCORRECT_FILE_FORMAT;
     }
 
     public ExceptionType type;
