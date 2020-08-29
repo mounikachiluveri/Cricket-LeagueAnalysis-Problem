@@ -86,8 +86,8 @@ public class IPLAnalyserTest {
         String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BATSMAN, SortBy.Field.FOURS_SIXES_RATE);
         MostRunsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostRunsData[].class);
         Assert.assertEquals("Andre Russell", cricketCSV[0].player);
-
     }
+
     @Test
     public void givenIPLFactSheetMostRunsFile_whenSortedOnMaximumFourandSixWithStrikeRate_shouldReturnSortedResult() throws IPLAnalyserException {
         IPLAnalyser iplAnalyser = new IPLAnalyser();
@@ -97,8 +97,15 @@ public class IPLAnalyserTest {
         Assert.assertEquals("Andre Russell", cricketCSV[0].player);
 
     }
+    @Test
+    public void givenIPLFactSheetMostRunsFile_whenSortedOnAverageWithStrikeRate_shouldReturnSortedResult() throws IPLAnalyserException {
+        IPLAnalyser iplAnalyser = new IPLAnalyser();
+        IPLAnalyser.loadIPLFactSheetData(IPLAnalyser.PlayerType.BATSMAN, IPL_BATSMAN_CSV_FILE_PATH);
+        String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BATSMAN, SortBy.Field.AVERAGE_OF_BATSMAN_WITH_STRIKE_RATE);
+        MostRunsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostRunsData[].class);
+        Assert.assertEquals("Ishant Sharma", cricketCSV[0].player);
 
-
+    }
 }
 
 

@@ -9,7 +9,7 @@ import java.util.Map;
     public class SortBy{
         static Map<Field, Comparator> sortFieldComparator = new HashMap<>();
         public enum Field {
-            AVERAGE_OF_BATSMAN,STRIKE_RATE,FOURS_SIXES_RATE,FOURS_SIXES_WITH_STRIKE_RATE;
+            AVERAGE_OF_BATSMAN,STRIKE_RATE,FOURS_SIXES_RATE,FOURS_SIXES_WITH_STRIKE_RATE,AVERAGE_OF_BATSMAN_WITH_STRIKE_RATE;
         }
 
         public static Comparator getComparatorField(SortBy.Field field) {
@@ -21,11 +21,8 @@ import java.util.Map;
             sortFieldComparator.put(Field.STRIKE_RATE, iplStrikeRateComparator.reversed());
             sortFieldComparator.put(Field.FOURS_SIXES_RATE, iplfoursandsixesComparator.reversed());
             sortFieldComparator.put(Field.FOURS_SIXES_WITH_STRIKE_RATE, iplfoursandsixesComparator.thenComparing(iplStrikeRateComparator).reversed());
-
-
-
+            sortFieldComparator.put(Field.AVERAGE_OF_BATSMAN_WITH_STRIKE_RATE, iplStrikeRateComparator.thenComparing(iplAverageBattingComparator).reversed());
             return (Comparator<IPLDAO>) sortFieldComparator.get(field);
-
         }
     }
 
