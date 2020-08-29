@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IPLAnalyserTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-08-29T17:59:14" hostname="DESKTOP-1HIDL2M" time="2.567">
+<testsuite name="IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-29T18:10:36" hostname="DESKTOP-1HIDL2M" time="0.622">
   <properties/>
-  <testcase name="givenIPLFactSheetMostRunsDatafile_whenFileNotProper_shouldThrowCustomException" classname="IPLAnalyserTest" time="0.588"/>
-  <testcase name="givenIPLFactSheetMostRunsFile_whenSortedOnStrikeRateReturnSortedResult" classname="IPLAnalyserTest" time="0.811"/>
-  <testcase name="givenIPLFactSheetMostRunsFile_whenSortedOnBattingAverage_shouldReturnSortedResult" classname="IPLAnalyserTest" time="0.325"/>
-  <testcase name="givenIPLFactSheetMostRunsDatafile_whenFileWrongFileType_shouldThrowCustomException" classname="IPLAnalyserTest" time="0.0"/>
-  <testcase name="givenIPLFactSheetMostRunsFile_whenProper_shouldReturnCorrectRecordCount" classname="IPLAnalyserTest" time="0.322"/>
-  <testcase name="givenIPLFactSheetMostRunsDatafile_whenNotProper_shouldReturnInCorrectRecordCount" classname="IPLAnalyserTest" time="0.253"/>
-  <testcase name="givenIPLFactSheetMostRunsFile_whenSortedOnMaximumFourandSix_shouldReturnSortedResult" classname="IPLAnalyserTest" time="0.257"/>
-  <system-out><![CDATA[100
-]]></system-out>
+  <testcase name="givenIPLFactSheetMostRunsFile_whenSortedOnMaximumFourandSixWithStrikeRate_shouldReturnSortedResult" classname="IPLAnalyserTest" time="0.622"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
