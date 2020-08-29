@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IPLAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-29T17:18:41" hostname="DESKTOP-1HIDL2M" time="1.283">
+<testsuite name="IPLAnalyserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-29T17:33:04" hostname="DESKTOP-1HIDL2M" time="3.821">
   <properties/>
-  <testcase name="givenIPLFactSheetMostRunsFile_whenSortedOnBattingAverage_shouldReturnSortedResult" classname="IPLAnalyserTest" time="1.283">
-    <failure message="org.junit.ComparisonFailure: expected:&lt;MS Dhoni[ ]&gt; but was:&lt;MS Dhoni[]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;MS Dhoni[ ]&gt; but was:&lt;MS Dhoni[]&gt;
+  <testcase name="givenIPLFactSheetMostRunsFile_whenSortedOnStrikeRate_shouldReturnSortedResult" classname="IPLAnalyserTest" time="3.821">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;Ishant Sharma[ ]&gt; but was:&lt;Ishant Sharma[]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;Ishant Sharma[ ]&gt; but was:&lt;Ishant Sharma[]&gt;
 	at org.junit.Assert.assertEquals(Assert.java:115)
 	at org.junit.Assert.assertEquals(Assert.java:144)
-	at IPLAnalyserTest.givenIPLFactSheetMostRunsFile_whenSortedOnBattingAverage_shouldReturnSortedResult(IPLAnalyserTest.java:68)
+	at IPLAnalyserTest.givenIPLFactSheetMostRunsFile_whenSortedOnStrikeRate_shouldReturnSortedResult(IPLAnalyserTest.java:77)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
