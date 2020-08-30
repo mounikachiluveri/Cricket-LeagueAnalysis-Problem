@@ -118,10 +118,10 @@ public class IPLAnalyserTest {
     }
 
     @Test
-    public void givenIPLFactSheetMostRunsFile_whenSortedOnBowlingAverage_shouldReturnSortedResult() throws IPLAnalyserException {
+    public void givenIPLFactSheetMostWiketsFile_whenSortedOnBowlingAverage_shouldReturnSortedResult() throws IPLAnalyserException {
         IPLAnalyser iplAnalyser = new IPLAnalyser();
         IPLAnalyser.loadIPLFactSheetData(IPLAnalyser.PlayerType.BATSMAN, IPL_BATSMAN_CSV_FILE_PATH);
-        String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BATSMAN, SortBy.Field.BOWLING_AVERAGE);
+        String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BOWLER, SortBy.Field.BOWLING_AVERAGE);
         MostRunsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostRunsData[].class);
         Assert.assertEquals("Marcus Stoinis", cricketCSV[0].player);
 
