@@ -34,7 +34,7 @@ public class MostWicketsData {
     public double economy;
 
     @CsvBindByName(column = "SR")
-    public double strikeRate;
+    public double bowlerstrikeRate;
 
     @CsvBindByName(column = "4w")
     public int fourWkt;
@@ -52,7 +52,7 @@ public class MostWicketsData {
         this.runs = runs;
         this.average = bowlingAverage;
         this.matches = matches;
-        this.strikeRate = strikeRate;
+        this.bowlerstrikeRate = bowlerstrikeRate;
         this.economy = economy;
         this.fourWkt = fourWkt;
         this.fiveWicket = fiveWicket;
