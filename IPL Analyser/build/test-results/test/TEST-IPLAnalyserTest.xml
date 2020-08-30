@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-30T05:45:24" hostname="DESKTOP-1HIDL2M" time="0.635">
+<testsuite name="IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-30T05:52:45" hostname="DESKTOP-1HIDL2M" time="0.646">
   <properties/>
-  <testcase name="givenIPLFactSheetMostWiketsFile_whenSortedOnBowlerStrikeRate_shouldReturnSortedResult" classname="IPLAnalyserTest" time="0.635"/>
+  <testcase name="givenIPLFactSheetMostWiketsFile_whenSortedOnBowlerEconomy_shouldReturnSortedResult" classname="IPLAnalyserTest" time="0.646"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -9,7 +9,15 @@ public class SortBy {
     static Map<Field, Comparator> sortFieldComparator = new HashMap<>();
 
     public enum Field {
-        AVERAGE_OF_BATSMAN, STRIKE_RATE, FOURS_SIXES_RATE, FOURS_SIXES_WITH_STRIKE_RATE, AVERAGE_OF_BATSMAN_WITH_STRIKE_RATE, RUNS_WITH_AVERAGE, BOWLING_AVERAGE,BOWLER_STRIKERATE;
+        AVERAGE_OF_BATSMAN,
+        STRIKE_RATE,
+        FOURS_SIXES_RATE,
+        FOURS_SIXES_WITH_STRIKE_RATE,
+        AVERAGE_OF_BATSMAN_WITH_STRIKE_RATE,
+        RUNS_WITH_AVERAGE,
+        BOWLING_AVERAGE,
+        BOWLER_STRIKERATE,
+        BEST_ECONOMY;
     }
 
     public static Comparator getComparatorField(SortBy.Field field) {
@@ -19,6 +27,7 @@ public class SortBy {
         Comparator<IPLDAO> iplrunsComparator = Comparator.comparing(census -> census.runs);
         Comparator<IPLDAO> iplbowlingComparator = Comparator.comparing(census -> census.bowlingAverage);
         Comparator<IPLDAO> iplStrikingRateBowlerComparator = Comparator.comparing(census -> census.bowlerstrikeRate);
+        Comparator<IPLDAO> ipleconomyBowlerComparator = Comparator.comparing(census -> census.economy);
 
         sortFieldComparator.put(Field.AVERAGE_OF_BATSMAN, iplAverageBattingComparator.reversed());
         sortFieldComparator.put(Field.STRIKE_RATE, iplStrikeRateComparator.reversed());
@@ -28,6 +37,7 @@ public class SortBy {
         sortFieldComparator.put(Field.RUNS_WITH_AVERAGE, iplrunsComparator.thenComparing(iplAverageBattingComparator).reversed());
         sortFieldComparator.put(Field.BOWLING_AVERAGE, iplbowlingComparator.reversed());
         sortFieldComparator.put(Field.BOWLER_STRIKERATE, iplStrikingRateBowlerComparator.reversed());
+        sortFieldComparator.put(Field.BEST_ECONOMY, ipleconomyBowlerComparator.reversed());
         return (Comparator<IPLDAO>) sortFieldComparator.get(field);
     }
 }
