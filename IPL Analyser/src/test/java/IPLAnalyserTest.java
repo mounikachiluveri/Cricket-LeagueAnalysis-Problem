@@ -139,7 +139,14 @@ public class IPLAnalyserTest {
         String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BOWLER, SortBy.Field.STRIKINGRATE_FIVEW_FOURW);
         MostWicketsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostWicketsData[].class);
         Assert.assertEquals("Lasith Malinga", cricketCSV[0].player);
+    }
 
+    @Test
+    public void givenIPLFactSheetMostWiketsFile_whenSortedOnBestAverageWithStrikeRate_shouldReturnSortedResult() throws IPLAnalyserException {
+        IPLAnalyser.loadIPLFactSheetData(IPLAnalyser.PlayerType.BOWLER, IPL_BOWLER_CSV_FILE_PATH);
+        String playerWiseSortedData = IPLAnalyser.getFieldWiseSortedPlayersData(IPLAnalyser.PlayerType.BOWLER, SortBy.Field.BOWLER_AVERAGE_WITH_STRIKERATE);
+        MostWicketsData[] cricketCSV = new Gson().fromJson(playerWiseSortedData, MostWicketsData[].class);
+        Assert.assertEquals("Krishnappa Gowtham", cricketCSV[0].player);
     }
 }
 

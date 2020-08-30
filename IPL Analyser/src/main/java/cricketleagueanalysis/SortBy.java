@@ -18,7 +18,8 @@ public class SortBy {
         BOWLING_AVERAGE,
         BOWLER_STRIKERATE,
         BEST_ECONOMY,
-        STRIKINGRATE_FIVEW_FOURW;
+        STRIKINGRATE_FIVEW_FOURW,
+        BOWLER_AVERAGE_WITH_STRIKERATE;
     }
 
     public static Comparator getComparatorField(SortBy.Field field) {
@@ -41,6 +42,7 @@ public class SortBy {
         sortFieldComparator.put(Field.BOWLER_STRIKERATE, iplStrikingRateBowlerComparator.reversed());
         sortFieldComparator.put(Field.BEST_ECONOMY, ipleconomyBowlerComparator.reversed());
         sortFieldComparator.put(Field.STRIKINGRATE_FIVEW_FOURW, iplStrikerateWithFivewandFourWBowlerComparator.thenComparing(iplStrikingRateBowlerComparator).reversed());
+        sortFieldComparator.put(Field.BOWLER_AVERAGE_WITH_STRIKERATE, iplbowlingComparator.thenComparing(iplStrikingRateBowlerComparator).reversed());
         return (Comparator<IPLDAO>) sortFieldComparator.get(field);
     }
 }
