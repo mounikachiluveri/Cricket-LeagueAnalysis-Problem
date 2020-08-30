@@ -19,7 +19,8 @@ public class SortBy {
         BOWLER_STRIKERATE,
         BEST_ECONOMY,
         STRIKINGRATE_FIVEW_FOURW,
-        BOWLER_AVERAGE_WITH_STRIKERATE;
+        BOWLER_AVERAGE_WITH_STRIKERATE,
+        BOWLER_WICKETS_WITH_AVERAGE;
     }
 
     public static Comparator getComparatorField(SortBy.Field field) {
@@ -31,6 +32,7 @@ public class SortBy {
         Comparator<IPLDAO> iplStrikingRateBowlerComparator = Comparator.comparing(census -> census.bowlerstrikeRate);
         Comparator<IPLDAO> ipleconomyBowlerComparator = Comparator.comparing(census -> census.economy);
         Comparator<IPLDAO> iplStrikerateWithFivewandFourWBowlerComparator = Comparator.comparing(census -> census.fiveWicket + census.fourWkt);
+        Comparator<IPLDAO> iplWicketsComparator = Comparator.comparing(census -> census.wickets);
 
         sortFieldComparator.put(Field.AVERAGE_OF_BATSMAN, iplAverageBattingComparator.reversed());
         sortFieldComparator.put(Field.STRIKE_RATE, iplStrikeRateComparator.reversed());
@@ -43,6 +45,7 @@ public class SortBy {
         sortFieldComparator.put(Field.BEST_ECONOMY, ipleconomyBowlerComparator.reversed());
         sortFieldComparator.put(Field.STRIKINGRATE_FIVEW_FOURW, iplStrikerateWithFivewandFourWBowlerComparator.thenComparing(iplStrikingRateBowlerComparator).reversed());
         sortFieldComparator.put(Field.BOWLER_AVERAGE_WITH_STRIKERATE, iplbowlingComparator.thenComparing(iplStrikingRateBowlerComparator).reversed());
+        sortFieldComparator.put(Field.BOWLER_WICKETS_WITH_AVERAGE, iplWicketsComparator.thenComparing(iplbowlingComparator).reversed());
         return (Comparator<IPLDAO>) sortFieldComparator.get(field);
     }
 }
